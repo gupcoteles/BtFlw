@@ -1,5 +1,3 @@
-[Contribution guidelines for this project](docs/CONTRIBUTING.md)
-
 # BtFlw
 
 a simple xpath identity test finder
