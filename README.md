@@ -2,6 +2,12 @@
 
 a simple xpath identity test finder
 
+# Installation
+
+```
+python3 -m pip install -r requirements.txt
+```
+
 # Usage
 
 ```
