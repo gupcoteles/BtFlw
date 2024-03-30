@@ -20,7 +20,7 @@ Use:
      python3 BtFlw.py [Flags]
 
 Flags:
-     -s, --site access the site
+     -s, --site     access the site
      -pi, --xpathid allow specifying the xpath ID
 
 Example:
