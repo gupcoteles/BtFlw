@@ -12,34 +12,34 @@ print((random.choice(Font)))
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--site", dest="site", help="access the site")
-    parser.add_argument("-pi", "--xpathid", dest="xpathId", help="allow specifying the xpath ID")
+    parser.add_argument("-p", "--xpathid", dest="xpathId", help="allow specifying the xpath ID")
     return parser.parse_args()
 
 args = main()
 
-driver = webdriver.Firefox()
+driver = webdriver.Firefox() # <- You can enter the browser you want
 driver.get("https://www." + args.site)
 
 try:
     xpathId = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, args.xpathId)))
-    print("xpath id found!")
+    print("Xpath id found!")
 
 except TimeoutException:
-    print("xpath id not found or timed out.")
+    print("Xpath id not found or timed out.")
 
     while True:
         tmout = input("Do you want to try again? (y/n): ")
         if tmout == "y" or "Y":
             try:
                 xpathId = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, args.xpathId)))
-                print("xpath id found!")
+                print("Xpath id found!")
                 break
 
             except TimeoutException:
-                print("xpath id not found or timed out.")
+                print("Xpath id not found or timed out.")
 
             except NoSuchElementException:
-                print("xpath id not found.")
+                print("Xpath id not found.")
 
             except Exception as e:
                 print("Error:", e)
@@ -48,7 +48,7 @@ except TimeoutException:
             break
 
 except NoSuchElementException:
-    print("xpath id not found.")
+    print("Xpath id not found.")
 
 except Exception as e:
     print("Error:", e)
