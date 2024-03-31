@@ -1,4 +1,6 @@
 import random
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,15 +15,25 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--site", dest="site", help="access the site")
     parser.add_argument("-p", "--xpathid", dest="xpathId", help="allow specifying the xpath ID")
+    parser.add_argument("-b", "--browser", dest="browser", help="Use to set browser(firefox/chrome/edge)")
     return parser.parse_args()
 
 args = main()
 
-driver = webdriver.Firefox() # <- You can enter the browser you want
+
+if args.browser == "firefox":
+    driver = webdriver.Firefox()
+
+if args.browser == "chrome":
+    driver = webdriver.Chrome()
+
+if args.browser == "edge":
+    driver = webdriver.Edge()
+
 driver.get("https://www." + args.site)
 
 try:
-    xpathId = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, args.xpathId)))
+    driver.find_element(By.XPATH, ("" + args.xpathId + ""))
     print("Xpath id found!")
 
 except TimeoutException:
@@ -31,8 +43,9 @@ except TimeoutException:
         tmout = input("Do you want to try again? (y/n): ")
         if tmout == "y" or "Y":
             try:
-                xpathId = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, args.xpathId)))
+                driver.find_element(By.XPATH, ("" + args.xpathId + ""))
                 print("Xpath id found!")
+                time.sleep(1.5)
                 break
 
             except TimeoutException:
