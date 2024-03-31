@@ -16,7 +16,7 @@ python3 BtFlw.py -h
 
 This will display help for the tool. Here are all the switches it supports.
 ```
-Use:
+Usage:
      python3 BtFlw.py [Flags]
 
 Flags:
