@@ -20,21 +20,34 @@ def main():
 
 args = main()
 
+try:
+    if args.browser == "firefox":
+        driver = webdriver.Firefox()
 
-if args.browser == "firefox":
-    driver = webdriver.Firefox()
+    if args.browser == "chrome":
+        driver = webdriver.Chrome()
 
-if args.browser == "chrome":
-    driver = webdriver.Chrome()
+    if args.browser == "edge":
+        driver = webdriver.Edge()
 
-if args.browser == "edge":
-    driver = webdriver.Edge()
+    else:
+        print("-"*50)
+        print("Choose one of the specified browsers (more -h)")
+        print("-"*50, end="\n\n")
 
-driver.get("https://www." + args.site)
+    driver.get("https://www." + args.site)
+
+except NameError:
+    pass
+
+except Exception as e:
+    print(e)
+
 
 try:
     driver.find_element(By.XPATH, ("" + args.xpathId + ""))
     print("Xpath id found!")
+    driver.quit()
 
 except TimeoutException:
     print("Xpath id not found or timed out.")
@@ -45,7 +58,7 @@ except TimeoutException:
             try:
                 driver.find_element(By.XPATH, ("" + args.xpathId + ""))
                 print("Xpath id found!")
-                time.sleep(1.5)
+                driver.quit()
                 break
 
             except TimeoutException:
@@ -65,5 +78,3 @@ except NoSuchElementException:
 
 except Exception as e:
     print("Error:", e)
-
-driver.quit()
