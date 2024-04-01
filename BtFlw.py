@@ -30,19 +30,20 @@ try:
     if args.browser == "edge":
         driver = webdriver.Edge()
 
+    if args.browser == "safari":
+        driver = webdriver.Safari()
+
     else:
-        print("-"*50)
-        print("Choose one of the specified browsers (more -h)")
-        print("-"*50, end="\n\n")
+        raise Exception("""
+-----------------------------------------
+Enter all valid parameters (more -h)
+-----------------------------------------
+        """)
 
     driver.get("https://www." + args.site)
 
-except NameError:
-    pass
-
 except Exception as e:
     print(e)
-
 
 try:
     driver.find_element(By.XPATH, ("" + args.xpathId + ""))
@@ -75,6 +76,7 @@ except TimeoutException:
 
 except NoSuchElementException:
     print("Xpath id not found.")
+
 
 except Exception as e:
     print("Error:", e)
