@@ -1,4 +1,4 @@
-EpicFont = """
+Epic = """
  ______  _________ _______  _                
 (  ___ \ \__   __/(  ____ \( \      |\     /|
 | (   ) )   ) (   | (    \/| (      | )   ( |
@@ -11,7 +11,7 @@ EpicFont = """
 
 """
 
-BigMoneyneFont = """
+BigMoneyne = """
  /$$$$$$$     /$$      /$$$$$$$$  /$$              
 | $$__  $$   | $$     | $$_____/ | $$              
 | $$  \ $$  /$$$$$$   | $$       | $$  /$$  /$$  /$$
@@ -46,4 +46,4 @@ d88'`?88P'  `?8b   d88'         88b  `?888P'888P'
 
 """
 
-Font = [EpicFont, BigMoneyneFont, Elite, Whimsy]
+Font = [Epic, BigMoneyne, Elite, Whimsy]
