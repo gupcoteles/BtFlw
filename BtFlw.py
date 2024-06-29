@@ -36,17 +36,17 @@ try:
     else:
         raise Exception("""
 -----------------------------------------
-Enter all valid parameters (more -h)
+choose the right browser (more -h)
 -----------------------------------------
         """)
-
-    driver.get("https://www." + args.site)
 
 except Exception as e:
     print(e)
 
+driver.get("https://www." + args.site)
+
 try:
-    driver.find_element(By.XPATH, ("" + args.xpathId + ""))
+    driver.find_element(By.XPATH, (f'"{args.xpathId}"'))
     print("Xpath id found!")
     driver.quit()
 
@@ -57,7 +57,7 @@ except TimeoutException:
         tmout = input("Do you want to try again? (y/n): ")
         if tmout == "y" or "Y":
             try:
-                driver.find_element(By.XPATH, ("" + args.xpathId + ""))
+                driver.find_element(By.XPATH, (f'"{args.xpathId}"'))
                 print("Xpath id found!")
                 driver.quit()
                 break
@@ -76,7 +76,6 @@ except TimeoutException:
 
 except NoSuchElementException:
     print("Xpath id not found.")
-
 
 except Exception as e:
     print("Error:", e)
