@@ -1,6 +1,6 @@
 # BtFlw
 
-A simple xpath checker
+A simple xpath checker.
 
 # Installation
 
@@ -12,7 +12,7 @@ python -m pip install -r requirements.txt
 >You Should have installed python
 
 >[!TIP]
->You can install python from <a href="https://www.python.org/downloads/" target="_blank">here</a>
+>You can install python from <a href="https://www.python.org/downloads/" target="_blank">here</a>.
 
 
 # Usage
