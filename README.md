@@ -1,6 +1,6 @@
 # BtFlw
 
-a simple xpath identity test finder
+a simple xpath checker
 
 # Installation
 
